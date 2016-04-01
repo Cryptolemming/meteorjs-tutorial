@@ -10,16 +10,16 @@ class App extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 
-		const text = ReactDOM.findDomNode(this.refs.textInput).value.trim();
+		const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
 
 		Tasks.insert({
 			text,
 			createdAt: new Date(),
 		});
 
-		ReactDOM.findDomNode(this.refs.textInput).value = '';
+		ReactDOM.findDOMNode(this.refs.textInput).value = '';
 	}
-	
+
 	renderTasks() {
 		return this.props.tasks.map((task) => {
 			<Task key={task._id} task={task} />
@@ -55,6 +55,6 @@ App.propTypes = {
 
 export default createContainer(() => {
 	return {
-		tasks: Tasks.find({}).fetch(),
+		tasks: Tasks.find({}, { sort: { createdAt: -1 } }).fetch(),
 	};
 }, App);
