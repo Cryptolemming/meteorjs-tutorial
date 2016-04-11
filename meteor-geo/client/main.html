@@ -1,0 +1,23 @@
+<head>
+  <title>simple</title>
+</head>
+
+<body>
+  <h1>GeoLocation Filtering</h1>
+
+  <h4>Your Location</h4>
+  {{> location}}
+
+  <h4>Waiting Lines Within Range</h4>
+  {{> waitingLines}}
+</body>
+
+<template name='location'>
+  <div>Lon: {{lon}}, Lat: {{lat}}</div>
+</template>
+
+<template name='waitingLines'>
+  <ul>
+    {{places}}
+  </ul>
+</template>
