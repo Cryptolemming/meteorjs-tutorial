@@ -1,5 +1,22 @@
 import { Meteor } from 'meteor/meteor';
 
-Meteor.startup(() => {
-  // code to run on server at startup
-});
+if (Meteor.isServer) {
+	Meteor.publish('places', inRange(lon, lat) => {
+		return Places.find(
+			{
+				loc: {
+					$geoWithin: {
+						$center: [
+							[
+								lon,
+								lat,
+								radius
+							]
+						]
+					}
+				}
+			}
+		)
+	})
+};
+
