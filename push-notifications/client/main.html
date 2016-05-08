@@ -1,0 +1,25 @@
+<head>
+  <title>Reactive Names w/ Push Notifications</title>
+</head>
+
+<body>
+  <h1>Reactive Names w/ Push Notifications</h1>
+
+  {{> namesForm}}
+  {{> namesList}}
+</body>
+
+<template name="namesForm">
+  <form class='new-name'>
+    <input type='text' name='name' placeholder='Enter Name' />
+    <button type='submit'>Submit</button>
+  </form>
+</template>
+
+<template name="namesList">
+  <ul>
+    {{#each names}}
+      <li>{{name}}</li>
+    {{/each}}
+  </ul>
+</template>
